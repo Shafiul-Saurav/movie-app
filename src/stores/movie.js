@@ -5,10 +5,10 @@ import axios from 'axios'
 export const useMovieStore = defineStore('movie', {
   state: () => ({
     apiKey: 'b21317f0',
-    search: '',
-    movies: [],
-    singleMovie: '',
-    movieCount: 0,
+    search: ref(null),
+    movies: ref([]),
+    singleMovie: ref(''),
+    movieCount: ref(0),
   }),
   getters: {
 
