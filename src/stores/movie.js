@@ -6,7 +6,7 @@ export const useMovieStore = defineStore('movie', {
   state: () => ({
     apiKey: 'b21317f0',
     search: ref(null),
-    movies: ref([]),
+    movies: ref({}),
     singleMovie: ref(''),
     movieCount: ref(0),
   }),
@@ -17,7 +17,7 @@ export const useMovieStore = defineStore('movie', {
   actions: {
     async searchMovie(){
       if (this.search != '') {
-        const { data } = await axios.get(`http://www.omdbapi.com/?apikey=${this.apiKey}&s=${this.search}`);
+        const { data } = await axios.get(`https://www.omdbapi.com/?apikey=${this.apiKey}&s=${this.search}`);
         this.movies = data.Search;
         this.movieCount = data.totalResults;
       }
@@ -25,7 +25,7 @@ export const useMovieStore = defineStore('movie', {
     },
     async getSingleMovie(id){
       if (this.search != '') {
-        const { data } = await axios.get(`http://www.omdbapi.com/?apikey=${this.apiKey}&i=${id}&plot=full`);
+        const { data } = await axios.get(`https://www.omdbapi.com/?apikey=${this.apiKey}&i=${id}&plot=full`);
         // console.log(data);
         this.singleMovie = data;
       }
